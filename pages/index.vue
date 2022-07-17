@@ -108,18 +108,45 @@
       <h2 class="main__three__h2">Join our team of writers</h2>
       <p class="main__three__p">On dasdas, writers earn a living doing what they love. 
 Getting started is easy. Just pay a one time $25 fee and everything is ready to go.</p>
-    <button class="main__three__button">Join Us</button>
+    <button @click="payViaService" class="main__three__button">Join Us</button>
     </div>
     </div>
   </div>
 </template>
 
 <script>
+import {FlutterwavePayButton} from "flutterwave-vue-v3"
 export default {
   name: 'IndexPage',
+  components:{
+     FlutterwavePayButton
+  },
   data(){
     return{
-      blogposts: {}
+      blogposts: {},
+      paymentData: {
+        tx_ref: this.generateReference(),
+        amount: 25,
+        currency: 'USD',
+        payment_options: 'card',
+        redirect_url: '',
+        meta: {
+          'counsumer_id': '7898',
+          'consumer_mac': 'kjs9s8ss7dd'
+        },
+        customer: {
+          name: 'Demo Customer  Name',
+          email: 'customer@mail.com',
+          phone_number: '081845***044'
+        } ,
+        customizations: {
+          title: 'Customization Title',
+          description: 'Customization Description',
+          logo: 'https://flutterwave.com/images/logo-colored.svg'
+        },
+        callback: this.makePaymentCallback,
+        onclose: this.closedPaymentModal
+      }
     }
   },
   mounted(){
@@ -133,6 +160,19 @@ export default {
           console.log(this.blogposts)
           
         });
+    },
+    payViaService() {
+      this.payWithFlutterwave(this.paymentData) 
+    } ,
+    makePaymentCallback(response) {
+      console.log("Pay", response)
+    },
+    closedPaymentModal() {
+      console.log('payment is closed');
+    },
+    generateReference(){
+      let date = new Date()
+      return date.getTime().toString();
     }
   }
 }
