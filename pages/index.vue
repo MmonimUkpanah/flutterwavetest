@@ -14,7 +14,7 @@
         
         <div class="main__one__text__footnote">
           <small class="main__one__text__footnote__small1">3 Min Read</small>
-          <small class="main__one__text__footnote__small2"><span class="main__one__text__footnote__small2__text">Read Full</span>  &#8594; </small>
+          <small class="main__one__text__footnote__small2"><a href="/details"><span class="main__one__text__footnote__small2__text"> Read Full</span>  &#8594;</a> </small>
         </div>
       </div>
     </div>
@@ -256,12 +256,18 @@ export default {
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;
-  color: #1473E6;
+  color: #1473E6 !important;
+  text-decoration: none !important;
+}
+a{
+  color: #1473E6 !important;
+  text-decoration: none !important;
 }
 
 .main__one__text__footnote__small2{
   display: inline-block;
   text-align: right;
+  text-decoration: none !important;
 }
 .main__two{
   margin-top: 52px;
