@@ -19,21 +19,21 @@
       </div>
     </div>
     <div class="main__two">
-      <div class="main__two__card">
+      <div class="main__two__card" v-for="(item, index) in blogposts " :key="index">
         <div class="main__two__card__image">
           <img src="/images/mini2.png" alt="css">
         </div>
         <div class="main__two__card__text">
           <small><span class="main__one__text__frontend"><b>Front-End</b></span>  <img src="/images/dot.png" alt="dot" class="main__one__text__image"> <span class="main__one__text__hour">1 Month Ago</span> </small>
-          <h2 class="main__one__text__h2">Css Grid</h2>
-          <p class="main__one__text__p1">The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages without having to use floats and positioning.</p>
+          <h2 class="main__one__text__h2">{{item.title.rendered }}</h2>
+          <p class="main__one__text__p1">{{item.excerpt.rendered}}</p>
           <div class="main__one__text__footnote">
           <small class="main__one__text__footnote__small1">3 Min Read</small>
           <small class="main__one__text__footnote__small2"><span class="main__one__text__footnote__small2__text">Read Full</span>  &#8594; </small>
         </div>
         </div>
       </div>
-      <div class="main__two__card">
+      <!-- <div class="main__two__card">
         <div class="main__two__card__image">
           <img src="/images/mini.png" alt="css">
         </div>
@@ -102,7 +102,7 @@
           <small class="main__one__text__footnote__small2"><span class="main__one__text__footnote__small2__text">Read Full</span>  &#8594; </small>
         </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="main__three">
       <h2 class="main__three__h2">Join our team of writers</h2>
