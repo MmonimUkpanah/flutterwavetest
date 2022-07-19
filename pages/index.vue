@@ -2,10 +2,12 @@
   <div>
     <Navbar/>
     <div class="main">
-      <div class="main__one">
+      <a href="/details">
+        <div class="main__one">
       <div class="main__one__card">
         <img src="/images/large.png" alt="" class="main__one__card__image">
       </div>
+      
       <div class="main__one__text">
         <small><span class="main__one__text__frontend"><b>Front-End</b></span>  <img src="/images/dot.png" alt="dot" class="main__one__text__image"> <span class="main__one__text__hour">1 Hour Ago</span> </small>
         <h2 class="main__one__text__h2">Optimizing CSS for faster page loads</h2>
@@ -18,18 +20,20 @@
         </div>
       </div>
     </div>
+      </a>
+      
     <div class="main__two">
-      <div class="main__two__card" v-for="(item, index) in blogposts " :key="index">
+      <div class="main__two__card hover" v-for="(item, index) in blogposts " :key="index" @click="viewPost(item.id)">
         <div class="main__two__card__image">
           <img  :src="item.jetpack_featured_media_url" alt="css">
         </div>
-        <div class="main__two__card__text">
+        <div class="main__two__card__text ">
           <small><span class="main__one__text__frontend"><b>Front-End</b></span>  <img src="/images/dot.png" alt="dot" class="main__one__text__image"> <span class="main__one__text__hour">1 Month Ago</span> </small>
           <h2 class="main__one__text__h2">{{item.title.rendered }}</h2>
           <p class="main__one__text__p1">{{item.excerpt.rendered}}</p>
           <div class="main__one__text__footnote">
           <small class="main__one__text__footnote__small1">3 Min Read</small>
-          <small class="main__one__text__footnote__small2"><a href="/details"><span class="main__one__text__footnote__small2__text"> Read Full</span>  &#8594;</a> </small>
+          <small class="main__one__text__footnote__small2"><span class="main__one__text__footnote__small2__text" > Read Full</span>  &#8594; </small>
         </div>
         </div>
       </div>
@@ -173,7 +177,10 @@ export default {
     generateReference(){
       let date = new Date()
       return date.getTime().toString();
-    }
+    },
+    viewPost(post) {
+      this.$router.push(`/${post}`);
+    },
   }
 }
 </script>
@@ -193,12 +200,15 @@ export default {
 .main{
   padding: 0px 158px;
 }
+.hover:hover{
+  cursor: pointer;
+}
 .main__one{
   background: #FFFFFF;
   border: 1px solid #F5F5F5;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   column-gap: 16px;
 }
 .main__one__card{
@@ -206,6 +216,7 @@ export default {
 }
 .main__one__card__image{
   width: 100%;
+  height: 100%;
 }
 .main__one__text{
   padding: 8px;
