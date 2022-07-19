@@ -21,7 +21,7 @@
     <div class="main__two">
       <div class="main__two__card" v-for="(item, index) in blogposts " :key="index">
         <div class="main__two__card__image">
-          <img src="/images/mini2.png" alt="css">
+          <img  :src="item.jetpack_featured_media_url" alt="css">
         </div>
         <div class="main__two__card__text">
           <small><span class="main__one__text__frontend"><b>Front-End</b></span>  <img src="/images/dot.png" alt="dot" class="main__one__text__image"> <span class="main__one__text__hour">1 Month Ago</span> </small>
@@ -29,7 +29,7 @@
           <p class="main__one__text__p1">{{item.excerpt.rendered}}</p>
           <div class="main__one__text__footnote">
           <small class="main__one__text__footnote__small1">3 Min Read</small>
-          <small class="main__one__text__footnote__small2"><span class="main__one__text__footnote__small2__text">Read Full</span>  &#8594; </small>
+          <small class="main__one__text__footnote__small2"><a href="/details"><span class="main__one__text__footnote__small2__text"> Read Full</span>  &#8594;</a> </small>
         </div>
         </div>
       </div>
