@@ -2,7 +2,7 @@
   <div>
     <Navbar/>
     <div class="main">
-      <a href="/details">
+      <nuxt-link to="/details">
         <div class="main__one">
       <div class="main__one__card">
         <img src="/images/large.png" alt="" class="main__one__card__image">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-      </a>
+      </nuxt-link>
       
     <div class="main__two">
       <div class="main__two__card hover" v-for="(item, index) in blogposts " :key="index" @click="viewPost(item.id)">
